@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --coral: #FF6B35;
+    --coral-glow: rgba(255, 107, 53, 0.25);
+    --midnight: #1A1A1A;
+    --warm-cream: #FAF6F1;
+    --charcoal: #2D2D2D;
+    --taupe: #8A7E72;
+    --light-taupe: #E8E2DB;
+    --warm-white: #FFFDF9;
+    --parchment: #F0EBE3;
+    --success-mint: #E8F5E9;
+    --dim-overlay: rgba(26, 26, 26, 0.35);
+
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .liquid-glass {
+    background: rgba(255, 253, 249, 0.15);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.3),
+      0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-3d-container {
+    perspective: 1200px;
+    perspective-origin: center center;
+  }
+
+  .card-3d {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  .gradient-hero {
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(138, 126, 114, 0.06) 0%, transparent 50%);
+  }
+
+  .gradient-quiz {
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(255, 107, 53, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(250, 246, 241, 0.03) 0%, transparent 50%);
+  }
+
+  .gradient-result {
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(255, 107, 53, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 25% 75%, rgba(232, 226, 219, 0.15) 0%, transparent 45%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Pulse glow animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Gradient shift fallback animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
